@@ -17,10 +17,12 @@ using namespace std;
   - we need to take advantage of the fact that the array has been
     sorted so we can achieve the time complexity of O(logN) instead
     of O(N)
+  - keep dividing the subarray until it is sorted or until it contains
+    one or two elements
   - the key is to spot the location that is out of order using
     the approach simliar to binary search
     - [4,5,6,7,0,1,2]
-      - we know it's out of order at nums[3] and nums[4]
+      - we know it's out of order at nums[3]=7 and nums[4]=0
       - you divide the array equally to find this location in O(logN) time
     - how do you know an array is sorted quickly? nums[0] < nums[n-1]
       [0,1,2,3,4,5,6,7]
@@ -35,7 +37,8 @@ int Solution::_findMin(const vector<int> &nums, int l, int r)
 {
   /* if there is only one element, l will be the same as r
      - there is no need to determine if the array is sorted or not
-       before finding the min element as a  min operation will suffice
+       before finding the min element as using the min operation will
+       suffice
   */
   if (l == r || l + 1 == r)
     return min(nums[l], nums[r]);
