@@ -50,6 +50,9 @@ int Solution::_findMin(const vector<int> &nums, int l, int r)
   /* divide the array into two */
   auto mid = l + (r - l) / 2;
 
+  /* the min can come from either left or right as
+     the array is rotated
+   */
   return min(_findMin(nums, l, mid), _findMin(nums, mid + 1, r));
 }
 
